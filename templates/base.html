@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <title>{% block title %}{% endblock %} - &#181;Squishy Software</title>
+
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <script src="{{ url_for('static', filename='js/jquery-2.1.0.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active">
+                        <a href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('about') }}">About</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('contact') }}">Contact</a>
+                    </li>
+                </ul>
+                <h3 class="muted">&#181;Squishy Software</h3>
+            </div>
+
+            <hr>
+
+            {% block content %}
+                
+            {% endblock %}
+
+            {% block footer %}
+                
+            {% endblock %}
+
+        </div>
+    </body>
+</html>
