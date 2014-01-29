@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(245, 245, 245);
+}
+
+#body_container {
+    max-width: 800px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+#footer {
+}
+
+#inner_wrap {
+    min-height: 100%;
+    height: auto;
+    /*margin: 0px auto -60px;*/
+    padding: 0px 0px 60px;
+    background-color: rgb(255, 255, 255);
+}

@@ -2,52 +2,70 @@
 <html lang="en">
     <head>
         {% block head %}
-        <title>{% block title %}{% endblock %} - &#181;Squishy Software</title>
+        <title>{% block title %}Page{% endblock title %} - &#181;Squishy Software</title>
 
         <meta charset="UTF-8">
 
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-        <script src="{{ url_for('static', filename='js/jquery-2.1.0.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-        {% endblock %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/uss.css') }}">
+        {% endblock head %}
     </head>
 
     <body>
-        <div class="container">
-            <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li 
-                    {% if request.path == url_for('index') %}
-                    class="active"
-                    {% endif %}>
-                        <a href="{{ url_for('index') }}">Home</a>
-                    </li>
-                    <li
-                    {% if request.path == url_for('about') %}
-                    class="active"
-                    {% endif %}>
-                        <a href="{{ url_for('about') }}">About</a>
-                    </li>
-                    <li
-                    {% if request.path == url_for('contact') %}
-                    class="active"
-                    {% endif %}>
-                        <a href="{{ url_for('contact') }}">Contact</a>
-                    </li>
-                </ul>
-                <h3 class="muted">&#181;Squishy Software</h3>
+        <!-- allows for complete override, if necessary -->
+        {% block body %}
+
+        <div id="body_container" class="container well">
+            <div id="inner_wrap">
+                <div class="header">
+                    <ul class="nav nav-pills pull-right">
+                        <li 
+                        {% if request.path == url_for('index') %}
+                        class="active"
+                        {% endif %}>
+                            <a href="{{ url_for('index') }}">Home</a>
+                        </li>
+                        <li
+                        {% if request.path == url_for('about') %}
+                        class="active"
+                        {% endif %}>
+                            <a href="{{ url_for('about') }}">About</a>
+                        </li>
+                        <li
+                        {% if request.path == url_for('contact') %}
+                        class="active"
+                        {% endif %}>
+                            <a href="{{ url_for('contact') }}">Contact</a>
+                        </li>
+                    </ul>
+                    <h3 class="muted">&#181;Squishy Software</h3>
+                </div>
+
+                <hr>
+
+                <!-- aligns everything -->
+                <div class="row">
+                    <div class="col-lg-12">
+                    {% block content %}
+                        
+                    {% endblock content %}
+                    </div>
+                </div>
+
             </div>
 
+            {% block footer %}
             <hr>
 
-            {% block content %}
-                
-            {% endblock %}
+            <div id="footer">
+                    &copy; 2014 Guy Bianco IV
+            </div>
 
-            {% block footer %}
-                
-            {% endblock %}
-
+            {% endblock footer %}
         </div>
+
+        {% endblock body %}
+        <script src="{{ url_for('static', filename='js/jquery-2.1.0.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     </body>
 </html>
